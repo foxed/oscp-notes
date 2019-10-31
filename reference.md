@@ -4,18 +4,20 @@ here is a collection of commands i often use for penetration testing. i know the
 
 ## enumeration
 
-service and safe scripts scan of an ip/network range
+**service and safe scripts scan of an ip/network range**
 
-`nmap -sC -sV ip-addr`
+-oN saves the output in nmap formatting (-oA saves output in xml/nmap/grep format)
 
-udp scan
+`nmap -sC -sV ip-addr -oN '/root/Documents/[ip-addr]/initial.nmap'`
+
+**udp scan**
 
 `nmap -sU ip-addr`
 
-full port scan
+**full port scan**
 
 `nmap -p- ip-addr`
 
-OS fingerprint 
+**OS fingerprint** 
 
 `nmap -O ip-addr`
