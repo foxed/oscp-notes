@@ -5,7 +5,7 @@ here is a collection of commands i often use for penetration testing. i know the
 note: sometimes i will use "ip-addr" to indicate where a target ip should go, sometimes 10.xx.xx.xx, etc
 some of these commands i gleaned from working within the HTB labs, not just pwk lab work.
 
-######enumeration
+### enumeration
 
 **service and safe scripts scan of an ip/network range**
 
@@ -101,12 +101,12 @@ we run it first without specifying a character count to ignore, and once we see 
 
 wfuzz --hc 404 -c -z file,/usr/share/wfuzz/wordlist/general/big.txt http://10.xx.x.xxx/webmail/src/FUZZ.php
 
-** hydra bf ssh **
+**hydra bf ssh**
 
 
 `hydra -f -V -t 1 -l root -P /usr/share/wordlists/rockyou.txt -s 22 10.11.1.* ssh`
 
-** ncrack bf ssh **
+**ncrack bf ssh**
 
 `ncrack -vv -p 22 --user root -P PASS_LIST 10.11.1.*`
 
