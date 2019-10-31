@@ -99,7 +99,7 @@ we run it first without specifying a character count to ignore, and once we see 
 
 wfuzz --hc 404 -c -z file,/usr/share/wfuzz/wordlist/general/big.txt http://10.xx.x.xxx/webmail/src/FUZZ.php
 
-######exploitation
+###### exploitation
 
 **compile for centos on kali**
 
@@ -123,4 +123,4 @@ if certutil is available:
 
 if neither is an option, echo this script into a new file:
 
-https://github.com/foxed/oscp-notes/blob/add-notes/scripts/wget.vbs
+[https://github.com/foxed/oscp-notes/blob/add-notes/scripts/wget.vbs]
