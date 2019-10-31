@@ -123,4 +123,4 @@ if certutil is available:
 
 if neither is an option, echo this script into a new file:
 
-wget.vbs
+https://github.com/foxed/oscp-notes/blob/add-notes/scripts/wget.vbs
