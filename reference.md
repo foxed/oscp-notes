@@ -24,19 +24,43 @@ some of these commands i gleaned from working within the HTB labs, not just pwk 
 
 `nmap -O ip-addr`
 
+**snmp enumeration**
+
+`nmap -sU -p 161 --script=snmp-brute -Pn 10.xx.x.xxx --script-args snmp-brute.communitiesdb=common-snmp-community-strings.txt
+
+**snmpwalk**
+
+`snmpwalk 10.xx.x.xxx:161 -v 1 -c public`
+
+**snmpwalk open tcp ports**
+
+`snmpwalk -c public -v1 10.xx.x.xxx 1.3.6.1.2.1.6.13.1.3 `
+
+**snmpwalk windows processes**
+
+`snmpwalk -c public -v1 10.11.1.128 1.3.6.1.2.1.25.4.2.1.2`
+
 **gobuster using default wordlist and scanning for specific statuses**
 
 saves output to gobuster-common.txt
 
 `gobuster -w /usr/share/seclists/Discovery/Web-Content/common.txt -u http://10.xx.xx.xx:8080/ -s '200,204,301,302,307,403,500' -o gobuster-common.txt`
 
-**gobuster -- fuzzing for file (vs. dir)***
+**gobuster -- fuzzing for file (vs. dir)**
 
 `gobuster -u http://10.xx.xx.xx -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -x aspx -o gobuster-default-aspx.txt`
 
 **gobuster ignore ssl cert**
 
 `gobuster -k`
+
+**wordpress?**
+
+`wpscan -u ip-addr`
+
+**nikto**
+
+`nikto -h ip-addr -output output.txt`
 
 **various methods of enumerating smb shares/servers**
 
@@ -50,7 +74,7 @@ note: enum4linux is finnicky on the pwk vm
 
 -L | list  -I | ip-address  -N | no-pass
 
-`smbclient -L \\ralph -I xx.xx.xx.xx -N`
+`smbclient -L \\SERVER -I xx.xx.xx.xx -N`
 
 `smbclient //SERVER/share -I xx.xx.xx.xx -N`
 
@@ -65,4 +89,16 @@ cd /opt/impacket/examples
 `python GetNPUsers.py htb.local/ -no-pass -usersfile users.txt -format hashcat -outputfile hashes.forest`
 
 
+**wfuzz**
+
+**wfuzz bruteforce http login -- hh is ignoring a specific char limit **
+first, observe the POST request in Burp, then plugin the user and password DOM elemenets into the commmand -- so here we see that the user login is defined by user_login, and the password is defined as pass
+
+we run it first without specifying a character count to ignore, and once we see what the failed login character count is, we ignore that (--hh), so that any different character count that occurs indicates a successful login (or, something that isn't a failed login)
+
+`wfuzz -z file,/usr/share/dirb/wordlists/others/best1050.txt -d "user_login=admin&pass=FUZZ" --hh 9471 http://10.xx.xx.xx/admin.php`
+
+**wfuzz fuzz**
+
+wfuzz --hc 404 -c -z file,/usr/share/wfuzz/wordlist/general/big.txt http://10.xx.x.xxx/webmail/src/FUZZ.php
 
