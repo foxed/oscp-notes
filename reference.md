@@ -5,13 +5,17 @@ here is a collection of commands i often use for penetration testing. i know the
 ## enumeration
 
 service and safe scripts scan of an ip/network range
+
 `nmap -sC -sV ip-addr`
 
 udp scan
+
 `nmap -sU ip-addr`
 
 full port scan
+
 `nmap -p- ip-addr`
 
 OS fingerprint 
+
 `nmap -O ip-addr`
