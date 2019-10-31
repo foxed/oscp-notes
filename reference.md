@@ -133,7 +133,7 @@ On kali:
 
 cd /opt/impacket/examples
 
-`./smbserver Heyo `pwd` `
+``./smbserver Heyo `pwd` ``
 
 here we start up a share called 'Heyo'
 
