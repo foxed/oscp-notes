@@ -22,20 +22,21 @@ note: sometimes i will use "ip-addr" to indicate where a target ip should go, so
 
 `nmap -O ip-addr`
 
-***gobuster using default wordlist and scanning for specific statuses***
+**gobuster using default wordlist and scanning for specific statuses**
+
 saves output to gobuster-common.txt
 
 `gobuster -w /usr/share/seclists/Discovery/Web-Content/common.txt -u http://10.xx.xx.xx:8080/ -s '200,204,301,302,307,403,500' -o gobuster-common.txt`
 
-***gobuster -- fuzzing for file (vs. dir)***
+**gobuster -- fuzzing for file (vs. dir)***
 
 `gobuster -u http://10.xx.xx.xx -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -x aspx -o gobuster-default-aspx.txt`
 
-***gobuster ignore ssl cert***
+**gobuster ignore ssl cert**
 
 `gobuster -k`
 
-***various methods of enumerating smb shares/servers***
+**various methods of enumerating smb shares/servers**
 
 `nmblookup -A 10.xx.xx.xx`
 
@@ -43,9 +44,9 @@ saves output to gobuster-common.txt
 
 note: enum4linux is finnicky on the pwk vm
 
-***smbclient***
+**smbclient**
 
--L|list  -I|ip-address  -N|no-pass
+-L | list  -I | ip-address  -N | no-pass
 
 `smbclient -L \\ralph -I xx.xx.xx.xx -N`
 
