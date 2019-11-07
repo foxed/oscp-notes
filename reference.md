@@ -221,10 +221,15 @@ check service binary permissions
 **can we access system files?**
 
 `%SYSTEMROOT%\repair\SAM`
+
 `%SYSTEMROOT%\System32\config\RegBack\SAM`
+
 `%SYSTEMROOT%\System32\config\SAM`
+
 `%SYSTEMROOT%\repair\system`
+
 `%SYSTEMROOT%\System32\config\SYSTEM`
+
 `%SYSTEMROOT%\System32\config\RegBack\system`
 
 **programs, processes, and services**
@@ -232,15 +237,19 @@ check service binary permissions
 what software is installed?
 
 `dir /a "C:\Program Files"`
+
 `dir /a "C:\Program Files (x86)"`
+
 `reg query HKEY_LOCAL_MACHINE\SOFTWARE`
 
 file permissions
 
 `icacls "C:\Program Files\*" 2>nul | findstr "(F)" | findstr "Everyone"`
+
 `icacls "C:\Program Files (x86)\*" 2>nul | findstr "(F)" | findstr "Everyone"`
 
 `icacls "C:\Program Files\*" 2>nul | findstr "(F)" | findstr "BUILTIN\Users"`
+
 `icacls "C:\Program Files (x86)\*" 2>nul | findstr "(F)" | findstr "BUILTIN\Users"`
 
 list windows services, running services/processes
