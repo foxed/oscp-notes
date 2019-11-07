@@ -142,7 +142,7 @@ if SeImpersonatePrivilege is enabled, then the host is likely vulnerable to rott
 
 **msfvenom**
 
-`msfvenom --list | grep windows`
+`msfvenom -l payload | grep php`
 
 ### moving files
 
