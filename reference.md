@@ -63,9 +63,15 @@ some of these commands i gleaned from working within the HTB labs, not just pwk 
 
 **various methods of enumerating smb shares/servers**
 
+`nmap --script smb-* --script-args=unsafe=1`
+
 `nmblookup -A 10.xx.xx.xx`
 
 `enum4linux -A 10.xx.xx.xx`
+
+`nbtscan -r 10.11.1.0/24`
+
+`smbmap -u "" -p "" -d MYGROUP -H 10.11.xx.xx`
 
 note: enum4linux is finnicky on the pwk vm
 
@@ -76,6 +82,10 @@ note: enum4linux is finnicky on the pwk vm
 `smbclient -L \\SERVER -I xx.xx.xx.xx -N`
 
 `smbclient //SERVER/share -I xx.xx.xx.xx -N`
+
+**auxiliary metasploit scripts**
+
+`msf auxiliary(scanner/smb/smb_version) > use auxiliary/scanner/smb/smb_version`
 
 **enum kerberos users**
 
