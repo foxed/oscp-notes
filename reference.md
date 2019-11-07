@@ -192,9 +192,9 @@ on windows (our target/victim):
 
 `PS Neigh:\> cp C:\Users\victim\Documents\CEH.kdbx .`
 
-#### windows priv esc
+### windows post exploitation
 
-### windows enum
+#### windows enum
 
 **system info**
 
@@ -205,18 +205,6 @@ on windows (our target/victim):
 exact OS version
 
 `type C:/Windows/system32/eula.txt`
-
-list windows services
-
-`wmic service list brief`
-
-`tasklist /SVC`
-
-`net start`
-
-list scheduled tasks
-
-`schtasks /query /fo LIST /v`
 
 **hotfixes installed**
 
@@ -230,8 +218,43 @@ check service binary permissions
 
 `icacls "C:\Program Files (x86)\Program Folder"`
 
+**can we access system files?**
 
+`%SYSTEMROOT%\repair\SAM`
+`%SYSTEMROOT%\System32\config\RegBack\SAM`
+`%SYSTEMROOT%\System32\config\SAM`
+`%SYSTEMROOT%\repair\system`
+`%SYSTEMROOT%\System32\config\SYSTEM`
+`%SYSTEMROOT%\System32\config\RegBack\system`
 
+**programs, processes, and services**
 
+what software is installed?
 
+`dir /a "C:\Program Files"`
+`dir /a "C:\Program Files (x86)"`
+`reg query HKEY_LOCAL_MACHINE\SOFTWARE`
 
+file permissions
+
+`icacls "C:\Program Files\*" 2>nul | findstr "(F)" | findstr "Everyone"`
+`icacls "C:\Program Files (x86)\*" 2>nul | findstr "(F)" | findstr "Everyone"`
+
+`icacls "C:\Program Files\*" 2>nul | findstr "(F)" | findstr "BUILTIN\Users"`
+`icacls "C:\Program Files (x86)\*" 2>nul | findstr "(F)" | findstr "BUILTIN\Users"`
+
+list windows services, running services/processes
+
+`wmic service list brief`
+
+`tasklist /SVC`
+
+`tasklist /v`
+
+`sc query`
+
+`net start`
+
+list scheduled tasks
+
+`schtasks /query /fo LIST /v`
