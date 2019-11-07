@@ -144,16 +144,6 @@ if SeImpersonatePrivilege is enabled, then the host is likely vulnerable to rott
 
 `msfvenom --list | grep windows`
 
-
-### windows post exploitation enumeration
-
-find unquoted service paths
-
-`wmic service get name,displayname,pathname,startmode |findstr /i "Auto" |findstr /i /v "C:\Windows\\" |findstr /i /v """`
-
-
-**this list is a WIP**
-
 ### moving files
 
 **windows file download**
@@ -267,3 +257,11 @@ list windows services, running services/processes
 list scheduled tasks
 
 `schtasks /query /fo LIST /v`
+
+`schtasks /query /fo LIST 2>nul | findstr TaskName`
+
+`dir C:\windows\tasks`
+
+**AlwaysInstallElevated?**
+
+`reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated`
