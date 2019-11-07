@@ -182,4 +182,46 @@ on windows (our target/victim):
 
 `PS Neigh:\> cp C:\Users\victim\Documents\CEH.kdbx .`
 
+#### windows priv esc
+
+### windows enum
+
+**system info**
+
+`set`
+
+`system info`
+
+exact OS version
+
+`type C:/Windows/system32/eula.txt`
+
+list windows services
+
+`wmic service list brief`
+
+`tasklist /SVC`
+
+`net start`
+
+list scheduled tasks
+
+`schtasks /query /fo LIST /v`
+
+**hotfixes installed**
+
+`wmic qfe get Caption,Description,HotFixID,InstalledOn`
+
+**unquoted service paths**
+
+`wmic service get name,displayname,pathname,startmode |findstr /i "Auto" |findstr /i /v "C:\Windows\\" |findstr /i /v """`
+
+check service binary permissions
+
+`icacls "C:\Program Files (x86)\Program Folder"`
+
+
+
+
+
 
