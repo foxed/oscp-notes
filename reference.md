@@ -7,6 +7,12 @@ some of these commands i gleaned from working within the HTB labs, not just pwk 
 
 ### enumeration
 
+**network sweep**
+
+`nmap -v -sn 10.xx.xx.1-254 -oG ping-sweep.txt`
+
+`grep Up ping-sweep.txt | cut -d " " -f 2`
+
 **service and safe scripts scan of an ip/network range**
 
 -oN saves the output in nmap formatting (-oA saves output in xml/nmap/grep format)
