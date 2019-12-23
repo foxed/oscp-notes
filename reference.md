@@ -63,6 +63,11 @@ some of these commands i gleaned from working within the HTB labs, not just pwk 
 
 `wpscan -u ip-addr`
 
+enumerate all wordpress plugins
+
+`wpscan --url http://10.10.10.x -e ap --log wpscan.out`
+
+
 **nikto**
 
 `nikto -h ip-addr -output output.txt`
