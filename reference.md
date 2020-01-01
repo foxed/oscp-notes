@@ -153,7 +153,7 @@ if SeImpersonatePrivilege is enabled, then the host is likely vulnerable to rott
 
 **msfvenom**
 
-`msfvenom -l payload | grep php`
+`msfvenom --list payloads | grep windows`
 
 msfvenom linux binary
 
