@@ -265,3 +265,11 @@ list scheduled tasks
 **AlwaysInstallElevated?**
 
 `reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated`
+
+**Active Directory**
+
+use ldapsearch to glean information on AD members, awk the usernames into list
+
+`ldapsearch -h 10.10.10.xx -x -b "DC=htb,DC=local" '(objectClass=Person)' sAMAccountName |grep sAMAccountName | awk '{print $2}' > userlist.ldap`
+
+
